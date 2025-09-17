@@ -2,6 +2,14 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csharp-code-school", "Csharp-code-school\Csharp-code-school.csproj", "{32F03BAE-BA58-4FC0-B03B-97E755033AF9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "School-projects", "School-projects", "{ECC6E486-A7D8-415E-B2DE-2A33BAEDF2C5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "School-lessons", "School-lessons", "{3FB1EED6-30D6-48B2-B34E-30B32194B3D4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exercises", "Exercises", "{BB4677EC-A0E5-4746-ACFA-5538FFA21CA4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Advanced", "Advanced", "{0D7858F0-9669-4088-9659-03867AC2A2BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +20,8 @@ Global
 		{32F03BAE-BA58-4FC0-B03B-97E755033AF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32F03BAE-BA58-4FC0-B03B-97E755033AF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32F03BAE-BA58-4FC0-B03B-97E755033AF9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{32F03BAE-BA58-4FC0-B03B-97E755033AF9} = {3FB1EED6-30D6-48B2-B34E-30B32194B3D4}
 	EndGlobalSection
 EndGlobal
