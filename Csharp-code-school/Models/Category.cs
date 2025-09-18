@@ -1,4 +1,4 @@
-namespace Csharp_code_school;
+namespace Csharp_code_school.Models;
 
 // Defines the available product categories for articles
 // Used to classify and organize inventory items

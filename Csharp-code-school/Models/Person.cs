@@ -1,4 +1,4 @@
-namespace Csharp_code_school;
+namespace Csharp_code_school.Models;
 /*
    Aufgabe für 11.9.2025
 

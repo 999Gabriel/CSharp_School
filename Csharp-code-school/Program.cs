@@ -1,8 +1,9 @@
-﻿namespace Csharp_code_school 
+﻿// Namespace entspricht einem Package in Java
+namespace Csharp_code_school 
 {
     public class Program
     {
-        public void Main()
+        public static void Main(String[] args)
         {
             /*
              * Datentypen
