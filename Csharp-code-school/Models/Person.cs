@@ -1,4 +1,10 @@
 namespace Csharp_code_school.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 /*
    Aufgabe für 11.9.2025
 
@@ -96,6 +102,6 @@ public class Person
         // $ bedeutet "String interpolation" --> innerhalb der "" können Variablen direkt eingebunden werden
         //                                                        und zwar mit {this.Id}
         return $"Id: {this.Id}, Name: {this.FirstName} {this.LastName}, " +
-               $"Salary: {this.Salary}, Birthday: {this.Birthday.ToShortDateString()}";
+               $"Salary: {this.Salary}, Birthday: {this.Birthday.ToLongDateString()}";
     }
 }
