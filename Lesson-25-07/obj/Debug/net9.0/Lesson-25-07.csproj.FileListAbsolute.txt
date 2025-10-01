@@ -1,0 +1,15 @@
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/bin/Debug/net9.0/Lesson-25-07
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/bin/Debug/net9.0/Lesson-25-07.deps.json
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/bin/Debug/net9.0/Lesson-25-07.runtimeconfig.json
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/bin/Debug/net9.0/Lesson-25-07.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/bin/Debug/net9.0/Lesson-25-07.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.AssemblyInfoInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.AssemblyInfo.cs
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.csproj.CoreCompileInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.sourcelink.json
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/refint/Lesson-25-07.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/Lesson-25-07.genruntimeconfig.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/Lesson-25-07/obj/Debug/net9.0/ref/Lesson-25-07.dll
