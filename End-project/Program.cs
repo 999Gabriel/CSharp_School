@@ -26,7 +26,7 @@ namespace End_project
                 new Article("iPhone 15 Review", "Anna Schmidt", new DateTime(2024, 2, 10), 15, Category.Handy),
                 new Article("Gaming Laptop Test", "Peter Müller", new DateTime(2024, 3, 5), 25, Category.Laptop),
                 new Article("Neue Sneaker Trends", "Lisa Weber", new DateTime(2024, 3, 20), 10, Category.Shoes),
-                new Article("Programmierung lernen", "Tom Fischer", new DateTime(2024, 4, 1), 45, Category.Book)
+                new Article("Programmierung lernen", "Gabriel Winkler", new DateTime(2024, 4, 1), 45, Category.Book)
             };
 
             // While-Schleife Beispiel 1: Personen mit hohem Gehalt anzeigen
