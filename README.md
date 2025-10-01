@@ -205,7 +205,7 @@ Feel free to explore the code, suggest improvements, or ask questions!
 
 ---
 
-📅 **Last Updated**: December 2024  
+📅 **Last Updated**: December 2025  
 🎯 **Next Update**: After Article class completion  
 ⭐ **Star this repo if you find it helpful!**  
 
