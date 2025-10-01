@@ -75,7 +75,8 @@ Welcome to my C# learning journey! This repository contains all my school projec
 | **C# (.NET)**       | Primary Language | ✅ Active   |
 | **JetBrains Rider** | IDE              | ✅ Active   |
 | **Git & GitHub**    | Version Control  | ✅ Active   |
-| **Visual Studio**   | Alternative IDE  | 📋 Available |
+| **Visual Studio**   | Alternative IDE  | 📋 Available|
+| **Cursor AI IDE**   | Alternative IDE  | 📋 Available|
 
 </div>
 
@@ -161,6 +162,7 @@ public class MyClass          // PascalCase for classes
 ## 📅 Upcoming Assignments
 
 - **Article Class** – Due: 11.9.2025  
+- **Endproject** - Due: 2.10.2025
 - **Inventory System** – Planning phase  
 - **Database Integration** – Future topic  
 
@@ -170,7 +172,7 @@ public class MyClass          // PascalCase for classes
 
 - **Course**: C# Programming Fundamentals  
 - **Institution**: Code School  
-- **Duration**: Academic Year 2024/2025  
+- **Duration**: Academic Year 2025/2026  
 - **Current Focus**: Object-Oriented Programming  
 
 ---

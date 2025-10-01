@@ -19,8 +19,8 @@ namespace End_project
                 new Person(5, "Tom", "Fischer", 3500.00m, new DateTime(1982, 7, 18))
             };
 
-            // Liste von Artikeln erstellen
-            List<Article> artikel = new List<Article>
+            // Liste von articlen erstellen
+            List<Article> article = new List<Article>
             {
                 new Article("C# Grundlagen", "Max Mustermann", new DateTime(2024, 1, 15), 30, Category.Book),
                 new Article("iPhone 15 Review", "Anna Schmidt", new DateTime(2024, 2, 10), 15, Category.Handy),
@@ -42,16 +42,16 @@ namespace End_project
             }
             Console.WriteLine();
 
-            // While-Schleife Beispiel 2: Artikel nach Kategorie filtern
-            Console.WriteLine("=== Artikel der Kategorie 'Book' ===");
-            int artikelIndex = 0;
-            while (artikelIndex < artikel.Count)
+            // While-Schleife Beispiel 2: article nach Kategorie filtern
+            Console.WriteLine("=== article der Kategorie 'Book' ===");
+            int articleIndex = 0;
+            while (articleIndex < article.Count)
             {
-                if (artikel[artikelIndex].Category1 == Category.Book)
+                if (article[articleIndex].Category1 == Category.Book)
                 {
-                    Console.WriteLine(artikel[artikelIndex].ToString());
+                    Console.WriteLine(article[articleIndex].ToString());
                 }
-                artikelIndex++;
+                articleIndex++;
             }
             Console.WriteLine();
 
