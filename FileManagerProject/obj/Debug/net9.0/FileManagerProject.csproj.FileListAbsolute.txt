@@ -1,0 +1,15 @@
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/bin/Debug/net9.0/FileManagerProject
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/bin/Debug/net9.0/FileManagerProject.deps.json
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/bin/Debug/net9.0/FileManagerProject.runtimeconfig.json
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/bin/Debug/net9.0/FileManagerProject.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/bin/Debug/net9.0/FileManagerProject.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.AssemblyInfoInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.AssemblyInfo.cs
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.csproj.CoreCompileInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.sourcelink.json
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/refint/FileManagerProject.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/FileManagerProject.genruntimeconfig.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/FileManagerProject/obj/Debug/net9.0/ref/FileManagerProject.dll

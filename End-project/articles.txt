@@ -1,0 +1,5 @@
+C# Grundlagen|Max Mustermann|2024-01-15|30|Book
+iPhone 15 Review|Anna Schmidt|2024-02-10|15|Handy
+Gaming Laptop Test|Peter Müller|2024-03-05|25|Laptop
+Neue Sneaker Trends|Lisa Weber|2024-03-20|10|Shoes
+Programmierung lernen|Gabriel Winkler|2024-04-01|45|Book

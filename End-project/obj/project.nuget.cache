@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "wtyo98vsgsE=",
+  "dgSpecHash": "N3R4Qqxg+0g=",
   "success": true,
   "projectFilePath": "/Users/gabriel/RiderProjects/Csharp-code-school/End-project/End-project.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/gabriel/.nuget/packages/microsoft.netcore.app.ref/7.0.20/microsoft.netcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/gabriel/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.20/microsoft.aspnetcore.app.ref.7.0.20.nupkg.sha512",
+    "/Users/gabriel/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.20/microsoft.netcore.app.host.osx-arm64.7.0.20.nupkg.sha512"
+  ],
   "logs": []
 }

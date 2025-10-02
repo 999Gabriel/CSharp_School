@@ -6,82 +6,275 @@ namespace End_project
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("=== Beispiel zur While-Schleife ===");
+            Console.WriteLine("=== Artikelverwaltungssystem mit Filemanagement ===");
             Console.WriteLine();
 
-            // Liste von Personen erstellen
-            List<Person> personen = new List<Person>
-            {
-                new Person(1, "Max", "Mustermann", 2500.50m, new DateTime(1990, 5, 15)),
-                new Person(2, "Anna", "Schmidt", 3200.75m, new DateTime(1985, 8, 22)),
-                new Person(3, "Peter", "Müller", 1800.00m, new DateTime(1995, 3, 10)),
-                new Person(4, "Lisa", "Weber", 2800.25m, new DateTime(1988, 12, 5)),
-                new Person(5, "Tom", "Fischer", 3500.00m, new DateTime(1982, 7, 18))
-            };
+            // FileManager für Artikel erstellen
+            FileManager fileManager = new FileManager("articles.txt");
 
-            // Liste von articlen erstellen
-            List<Article> article = new List<Article>
-            {
-                new Article("C# Grundlagen", "Max Mustermann", new DateTime(2024, 1, 15), 30, Category.Book),
-                new Article("iPhone 15 Review", "Anna Schmidt", new DateTime(2024, 2, 10), 15, Category.Handy),
-                new Article("Gaming Laptop Test", "Peter Müller", new DateTime(2024, 3, 5), 25, Category.Laptop),
-                new Article("Neue Sneaker Trends", "Lisa Weber", new DateTime(2024, 3, 20), 10, Category.Shoes),
-                new Article("Programmierung lernen", "Gabriel Winkler", new DateTime(2024, 4, 1), 45, Category.Book)
-            };
+            // Artikel aus der Textdatei laden
+            List<Article> articles = fileManager.LoadArticles();
 
-            // While-Schleife Beispiel 1: Personen mit hohem Gehalt anzeigen
-            Console.WriteLine("=== Personen mit Gehalt über 2500€ ===");
-            int index = 0;
-            while (index < personen.Count)
+            // Hauptmenü
+            bool programmLaeuft = true;
+            while (programmLaeuft)
             {
-                if (personen[index].Salary > 2500)
+                Console.WriteLine("\n=== Hauptmenü ===");
+                Console.WriteLine("1. Alle Artikel anzeigen");
+                Console.WriteLine("2. Artikel nach Kategorie filtern");
+                Console.WriteLine("3. Neuen Artikel hinzufügen");
+                Console.WriteLine("4. Artikel nach Autor suchen");
+                Console.WriteLine("5. Artikel nach Lesezeit filtern");
+                Console.WriteLine("6. Artikel speichern");
+                Console.WriteLine("0. Programm beenden");
+                Console.Write("Wählen Sie eine Option: ");
+
+                string? eingabe = Console.ReadLine();
+                Console.WriteLine();
+
+                switch (eingabe?.Trim())
                 {
-                    Console.WriteLine(personen[index].ToString());
+                    case "1":
+                        ShowAllArticles(articles);
+                        break;
+                    case "2":
+                        FilterArticlesByCategory(articles);
+                        break;
+                    case "3":
+                        AddNewArticle(fileManager, articles);
+                        break;
+                    case "4":
+                        SearchArticlesByAuthor(articles);
+                        break;
+                    case "5":
+                        FilterArticlesByReadingTime(articles);
+                        break;
+                    case "6":
+                        fileManager.SaveArticles(articles);
+                        break;
+                    case "0":
+                        programmLaeuft = false;
+                        Console.WriteLine("Programm wird beendet...");
+                        break;
+                    default:
+                        Console.WriteLine("Ungültige Eingabe! Bitte wählen Sie eine Option zwischen 0-6.");
+                        break;
+                }
+            }
+
+            Console.WriteLine("Auf Wiedersehen!");
+        }
+
+        /// <summary>
+        /// Zeigt alle Artikel an
+        /// </summary>
+        /// <param name="articles">Liste der Artikel</param>
+        private static void ShowAllArticles(List<Article> articles)
+        {
+            Console.WriteLine("=== Alle Artikel ===");
+            if (articles.Count == 0)
+            {
+                Console.WriteLine("Keine Artikel vorhanden.");
+                return;
+            }
+
+            int index = 0;
+            while (index < articles.Count)
+            {
+                Console.WriteLine($"{index + 1}. {articles[index].ToString()}");
+                index++;
+            }
+        }
+
+        /// <summary>
+        /// Filtert Artikel nach Kategorie
+        /// </summary>
+        /// <param name="articles">Liste der Artikel</param>
+        private static void FilterArticlesByCategory(List<Article> articles)
+        {
+            Console.WriteLine("=== Artikel nach Kategorie filtern ===");
+            Console.WriteLine("Verfügbare Kategorien:");
+            Console.WriteLine("1. Book");
+            Console.WriteLine("2. Laptop");
+            Console.WriteLine("3. Shoes");
+            Console.WriteLine("4. Handy");
+            Console.WriteLine("5. NotSpecified");
+            Console.Write("Wählen Sie eine Kategorie (1-5): ");
+
+            if (int.TryParse(Console.ReadLine(), out int categoryChoice))
+            {
+                Category selectedCategory = categoryChoice switch
+                {
+                    1 => Category.Book,
+                    2 => Category.Laptop,
+                    3 => Category.Shoes,
+                    4 => Category.Handy,
+                    5 => Category.NotSpecified,
+                    _ => Category.NotSpecified
+                };
+
+                Console.WriteLine($"\n=== Artikel der Kategorie '{selectedCategory}' ===");
+                int index = 0;
+                int gefundeneArtikel = 0;
+                while (index < articles.Count)
+                {
+                    if (articles[index].Category1 == selectedCategory)
+                    {
+                        Console.WriteLine($"{gefundeneArtikel + 1}. {articles[index].ToString()}");
+                        gefundeneArtikel++;
+                    }
+                    index++;
+                }
+
+                if (gefundeneArtikel == 0)
+                {
+                    Console.WriteLine("Keine Artikel in dieser Kategorie gefunden.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe!");
+            }
+        }
+
+        /// <summary>
+        /// Sucht Artikel nach Autor
+        /// </summary>
+        /// <param name="articles">Liste der Artikel</param>
+        private static void SearchArticlesByAuthor(List<Article> articles)
+        {
+            Console.WriteLine("=== Artikel nach Autor suchen ===");
+            Console.Write("Geben Sie den Autornamen ein: ");
+            string? suchbegriff = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(suchbegriff))
+            {
+                Console.WriteLine("Ungültiger Suchbegriff!");
+                return;
+            }
+
+            Console.WriteLine($"\n=== Suchergebnisse für '{suchbegriff}' ===");
+            int index = 0;
+            int gefundeneArtikel = 0;
+            while (index < articles.Count)
+            {
+                if (articles[index].Author.Contains(suchbegriff, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine($"{gefundeneArtikel + 1}. {articles[index].ToString()}");
+                    gefundeneArtikel++;
                 }
                 index++;
             }
-            Console.WriteLine();
 
-            // While-Schleife Beispiel 2: article nach Kategorie filtern
-            Console.WriteLine("=== article der Kategorie 'Book' ===");
-            int articleIndex = 0;
-            while (articleIndex < article.Count)
+            if (gefundeneArtikel == 0)
             {
-                if (article[articleIndex].Category1 == Category.Book)
-                {
-                    Console.WriteLine(article[articleIndex].ToString());
-                }
-                articleIndex++;
+                Console.WriteLine("Keine Artikel von diesem Autor gefunden.");
             }
-            Console.WriteLine();
+        }
 
-            // While-Schleife Beispiel 3: Benutzerinteraktion
-            Console.WriteLine("=== Interaktives Beispiel ===");
-            Console.WriteLine("Geben Sie eine Zahl zwischen 1 und 5 ein (0 zum Beenden):");
-            
-            int eingabe = -1;
-            while (eingabe != 0)
+        /// <summary>
+        /// Filtert Artikel nach Lesezeit
+        /// </summary>
+        /// <param name="articles">Liste der Artikel</param>
+        private static void FilterArticlesByReadingTime(List<Article> articles)
+        {
+            Console.WriteLine("=== Artikel nach Lesezeit filtern ===");
+            Console.Write("Geben Sie die maximale Lesezeit in Minuten ein: ");
+
+            if (int.TryParse(Console.ReadLine(), out int maxLesezeit))
             {
-                Console.Write("Eingabe: ");
-                if (int.TryParse(Console.ReadLine(), out eingabe))
+                Console.WriteLine($"\n=== Artikel mit Lesezeit <= {maxLesezeit} Minuten ===");
+                int index = 0;
+                int gefundeneArtikel = 0;
+                while (index < articles.Count)
                 {
-                    if (eingabe >= 1 && eingabe <= 5)
+                    if (articles[index].Lesezeit <= maxLesezeit)
                     {
-                        Console.WriteLine($"Person {eingabe}: {personen[eingabe - 1].ToString()}");
-                        Console.WriteLine();
+                        Console.WriteLine($"{gefundeneArtikel + 1}. {articles[index].ToString()}");
+                        gefundeneArtikel++;
                     }
-                    else if (eingabe != 0)
-                    {
-                        Console.WriteLine("Bitte geben Sie eine Zahl zwischen 1 und 5 ein (0 zum Beenden).");
-                    }
+                    index++;
                 }
-                else
+
+                if (gefundeneArtikel == 0)
                 {
-                    Console.WriteLine("Bitte geben Sie eine gültige Zahl ein.");
+                    Console.WriteLine($"Keine Artikel mit Lesezeit <= {maxLesezeit} Minuten gefunden.");
                 }
             }
+            else
+            {
+                Console.WriteLine("Ungültige Eingabe!");
+            }
+        }
 
-            Console.WriteLine("Programm beendet. Auf Wiedersehen!");
+        /// <summary>
+        /// Hilfsmethode zum Hinzufügen eines neuen Artikels
+        /// </summary>
+        /// <param name="fileManager">FileManager-Instanz</param>
+        /// <param name="articles">Liste der Artikel</param>
+        private static void AddNewArticle(FileManager fileManager, List<Article> articles)
+        {
+            try
+            {
+                Console.WriteLine("\n=== Neuen Artikel hinzufügen ===");
+                
+                Console.Write("Titel: ");
+                string titel = Console.ReadLine() ?? "";
+                
+                Console.Write("Autor: ");
+                string autor = Console.ReadLine() ?? "";
+                
+                Console.Write("Veröffentlichungsdatum (yyyy-mm-dd): ");
+                if (!DateTime.TryParse(Console.ReadLine(), out DateTime publishDate))
+                {
+                    Console.WriteLine("Ungültiges Datum! Verwende aktuelles Datum.");
+                    publishDate = DateTime.Now;
+                }
+                
+                Console.Write("Lesezeit (Minuten): ");
+                if (!int.TryParse(Console.ReadLine(), out int lesezeit))
+                {
+                    Console.WriteLine("Ungültige Lesezeit! Verwende 0.");
+                    lesezeit = 0;
+                }
+                
+                Console.WriteLine("Verfügbare Kategorien:");
+                Console.WriteLine("1. Book");
+                Console.WriteLine("2. Laptop");
+                Console.WriteLine("3. Shoes");
+                Console.WriteLine("4. Handy");
+                Console.WriteLine("5. NotSpecified");
+                Console.Write("Kategorie (1-5): ");
+                
+                Category category = Category.NotSpecified;
+                if (int.TryParse(Console.ReadLine(), out int categoryChoice))
+                {
+                    category = categoryChoice switch
+                    {
+                        1 => Category.Book,
+                        2 => Category.Laptop,
+                        3 => Category.Shoes,
+                        4 => Category.Handy,
+                        5 => Category.NotSpecified,
+                        _ => Category.NotSpecified
+                    };
+                }
+                
+                Article newArticle = new Article(titel, autor, publishDate, lesezeit, category);
+                
+                // Artikel zur lokalen Liste hinzufügen
+                articles.Add(newArticle);
+                
+                // Artikel zur Datei hinzufügen
+                fileManager.AddArticle(newArticle);
+                
+                Console.WriteLine("Artikel erfolgreich hinzugefügt!");
+                Console.WriteLine(newArticle.ToString());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Fehler beim Hinzufügen des Artikels: {ex.Message}");
+            }
         }
     }
 }

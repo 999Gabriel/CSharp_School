@@ -1,0 +1,11 @@
+1;iPhone 14;Apple;135990,00;cooles Handy, sehr teuer;Handy
+2;Galaxy S23;Samsung;124950,00;tolles Android Smartphone;Handy
+3;ThinkPad X1;Lenovo;189900,00;Business Laptop mit langer Akkulaufzeit;Laptop
+4;MacBook Air M2;Apple;149999,00;leicht und leistungsstark;Laptop
+5;Der Alchemist;Paulo Coelho;1490,00;inspirierender Roman über Träume;Book
+6;Clean Code;Robert C. Martin;3990,00;wichtiges Buch für Softwareentwickler;Book
+7;Air Jordan 1;Nike;17995,00;klassische Sneakers im Retro Look;Shoes
+8;Yeezy Boost 350;Adidas;22000,00;sehr bequeme und trendige Schuhe;Shoes
+9;Gaming Laptop Omen;HP;159900,00;starker Laptop für Gamer;Laptop
+10;Unbekanntes Produkt;N/A;0,00;keine Details verfügbar;NotSpecified
+11;Macbook Air M3;Apple Inc.;108900,00;leichtes aber leistungsstarkes Macbook, perfekt für Schüler oder Studenten;Laptop
