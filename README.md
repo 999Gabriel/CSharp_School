@@ -25,12 +25,12 @@ Welcome to my C# learning journey! This repository contains all my school projec
 ## 🗂️ Repository Structure
 
 ```
-📁 CSharp_School/
- ├── 📂 Lessons/       # Daily lesson code and examples
- ├── 📂 Projects/      # Major assignments and projects
- ├── 📂 Exercises/     # Practice problems and solutions
- ├── 📂 Fundamentals/  # Core C# concepts implementation
- └── 📂 Advanced/      # Advanced topics and techniques
+📁 Csharp-code-school/
+ ├── 📂 Csharp-code-school/     # Grundlagen-Projekt mit Person/Article Klassen
+ ├── 📂 End-project/            # Artikelverwaltungssystem mit Filemanagement
+ ├── 📂 FileManagerProject/     # Erweiterte Artikelverwaltung mit erweiterten Features
+ ├── 📂 Lesson-25-07/           # Lektion vom 25.07 mit Klassen-Beispielen
+ └── 📄 README.md               # Diese Dokumentation
 ```
 
 ---
@@ -72,9 +72,13 @@ Welcome to my C# learning journey! This repository contains all my school projec
 
 | Technology          | Purpose           | Status      |
 |---------------------|------------------|-------------|
-| **C# (.NET)**       | Primary Language | ✅ Active   |
+| **C# (.NET 9.0)**   | Primary Language | ✅ Active   |
 | **JetBrains Rider** | IDE              | ✅ Active   |
 | **Git & GitHub**    | Version Control  | ✅ Active   |
+| **File I/O**        | Data Persistence | ✅ Implemented |
+| **Collections**     | List, Dictionary | ✅ Implemented |
+| **Exception Handling** | Error Management | ✅ Implemented |
+| **Console Applications** | User Interface | ✅ Implemented |
 | **Visual Studio**   | Alternative IDE  | 📋 Available|
 | **Cursor AI IDE**   | Alternative IDE  | 📋 Available|
 
@@ -84,15 +88,40 @@ Welcome to my C# learning journey! This repository contains all my school projec
 
 ## 📋 Current Projects
 
-### 🏗️ In Progress
-- **Person Class Implementation** - Object-oriented design with properties, constructors, and methods  
-- **Article Class Assignment** - Implementing diverse data types and OOP principles  
+### ✅ Completed Projects
 
-### 📝 Planned
-- Article Management System  
-- Student Grade Calculator  
-- Inventory Management Console App  
-- Bank Account Simulation  
+#### 🎓 **Csharp-code-school** - Grundlagen-Projekt
+- **Person Class** - Vollständige OOP-Implementierung mit Properties, Konstruktoren und Validierung
+- **Article Class** - Erweiterte Artikel-Klasse mit verschiedenen Datentypen und Geschäftslogik
+- **Dictionary/List Management** - Kunden-Artikel-Zuordnung mit Dictionary und List-Operationen
+- **Console I/O** - Benutzerinteraktion mit Eingabevalidierung und Fehlerbehandlung
+
+#### 🏪 **End-project** - Artikelverwaltungssystem
+- **FileManager Class** - Vollständiges Dateimanagement für Artikel-Persistierung
+- **Menu-driven Interface** - Benutzerfreundliche Konsolenanwendung mit Hauptmenü
+- **Article Management** - CRUD-Operationen für Artikel (Create, Read, Update, Delete)
+- **Category Filtering** - Artikel nach Kategorien filtern und durchsuchen
+- **Author Search** - Suche nach Artikeln basierend auf Autor
+- **Reading Time Filter** - Filterung nach Lesezeit für Bücher
+
+#### 🔧 **FileManagerProject** - Erweiterte Artikelverwaltung
+- **Enhanced FileManager** - Verbesserte Dateioperationen mit absoluten Pfaden
+- **Advanced Article Features** - Erweiterte Artikel-Eigenschaften (Preis, Beschreibung, ID-Management)
+- **Automatic ID Generation** - Automatische ID-Generierung für neue Artikel
+- **Book-specific Features** - Spezielle Lesezeit-Features nur für Bücher
+- **Data Persistence** - Vollständige Datenpersistierung in Textdateien
+
+#### 📚 **Lesson-25-07** - Klassen-Beispiele
+- **Basic Class Examples** - Einfache Implementierung von Person und Article Klassen
+- **Enum Usage** - Verwendung von Category-Enums
+- **Constructor Examples** - Verschiedene Konstruktor-Patterns
+- **ToString Override** - Überschreibung der ToString-Methode
+
+### 🔄 Currently Learning
+- File I/O Operations (✅ Implementiert)
+- Exception Handling (✅ Implementiert)
+- Collections and Generics (✅ Implementiert)
+- LINQ and Lambda Expressions (🔄 In Progress)  
 
 ---
 
@@ -146,6 +175,19 @@ public class MyClass          // PascalCase for classes
 - [x] String Interpolation (`$"Hello {name}"`)  
 - [x] Access Modifiers (private, public)  
 - [x] Method Overriding (`ToString()`)  
+- [x] Collections (List, Array, Dictionary)  
+- [x] Exception Handling (try-catch)  
+- [x] File I/O Operations (File.ReadAllLines, File.WriteAllLines)  
+- [x] Enum Usage (Category enum)  
+- [x] Input Validation and Error Handling  
+- [x] Menu-driven Console Applications  
+- [x] Data Persistence (Text File Storage)  
+- [x] CRUD Operations (Create, Read, Update, Delete)  
+- [x] Search and Filter Functionality  
+- [x] Constructor Chaining (`: this(...)`)  
+- [x] Property Validation and Business Logic  
+- [x] Dictionary and List Management  
+- [x] String Manipulation and Parsing
 
 ---
 
@@ -153,18 +195,19 @@ public class MyClass          // PascalCase for classes
 
 - [ ] Inheritance and Polymorphism  
 - [ ] Abstract Classes and Interfaces  
-- [ ] Collections (List, Array, Dictionary)  
-- [ ] Exception Handling  
-- [ ] File I/O Operations  
+- [ ] LINQ and Lambda Expressions  
+- [ ] Async/Await Programming  
+- [ ] Database Integration (SQL Server/Entity Framework)
 
 ---
 
 ## 📅 Upcoming Assignments
 
-- **Article Class** – Due: 11.9.2025  
-- **Endproject** - Due: 2.10.2025
-- **Inventory System** – Planning phase  
-- **Database Integration** – Future topic  
+- **Advanced OOP Concepts** – Inheritance and Polymorphism  
+- **Database Integration** – Entity Framework und SQL Server  
+- **Web API Development** – ASP.NET Core Web API  
+- **Unit Testing** – NUnit oder xUnit Framework  
+- **Advanced Collections** – LINQ und Lambda Expressions  
 
 ---
 
@@ -182,15 +225,26 @@ public class MyClass          // PascalCase for classes
 - **Properties vs Fields** – Difference between private fields (`_name`) and public properties (`Name { get; set; }`)  
 - **Constructor Chaining** – Using `: this(...)` to reuse code across constructors  
 - **String Interpolation** – Modern C# syntax using `$"..."` for embedded expressions  
+- **File I/O Operations** – Reading and writing data to text files with error handling  
+- **Menu-driven Applications** – Creating user-friendly console interfaces  
+- **Data Validation** – Implementing business logic in property setters  
+- **Collection Management** – Using Lists and Dictionaries for data organization  
+- **Exception Handling** – Proper error management with try-catch blocks  
+- **CRUD Operations** – Complete Create, Read, Update, Delete functionality  
+- **Search and Filter** – Implementing search functionality across different criteria  
 
 ---
 
 ## 📈 Code Quality Metrics
 
 - **Naming Conventions**: ✅ Following C# standards  
-- **Documentation**: ✅ Comprehensive comments  
-- **Error Handling**: 🔄 In progress  
-- **Unit Testing**: 📋 Planned  
+- **Documentation**: ✅ Comprehensive comments and XML documentation  
+- **Error Handling**: ✅ Implemented with try-catch blocks  
+- **Input Validation**: ✅ User input validation throughout applications  
+- **Code Organization**: ✅ Well-structured classes and methods  
+- **Business Logic**: ✅ Proper validation in property setters  
+- **File Management**: ✅ Robust file I/O with error handling  
+- **Unit Testing**: 📋 Planned for future projects  
 
 ---
 
@@ -205,8 +259,8 @@ Feel free to explore the code, suggest improvements, or ask questions!
 
 ---
 
-📅 **Last Updated**: December 2025  
-🎯 **Next Update**: After Article class completion  
+📅 **Last Updated**: Januar 2025  
+🎯 **Next Update**: After advanced OOP concepts implementation  
 ⭐ **Star this repo if you find it helpful!**  
 
 Happy Coding! 🚀
