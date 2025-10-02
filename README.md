@@ -161,7 +161,7 @@ public class MyClass          // PascalCase for classes
 ## 📊 Learning Progress
 
 <div>
-![Overall Progress](../progress-35.svg)
+![Overall Progress](assets/progress-35.svg)
 </div>
 
 ---
