@@ -9,3 +9,4 @@
 9;Gaming Laptop Omen;HP;159900,00;starker Laptop für Gamer;Laptop
 10;Unbekanntes Produkt;N/A;0,00;keine Details verfügbar;NotSpecified
 11;Macbook Air M3;Apple Inc.;108900,00;leichtes aber leistungsstarkes Macbook, perfekt für Schüler oder Studenten;Laptop
+12;Mathe Buch 4BHWII;Hölzö Verlag;3499,00;Das Mathe Buch für Engineuer an der HTL;Book
