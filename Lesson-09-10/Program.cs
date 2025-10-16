@@ -1,4 +1,5 @@
-﻿using Lesson_09_10.models;
+﻿using System.Globalization;
+using Lesson_09_10.models;
 
 namespace Lesson_09_10
 {
@@ -59,6 +60,63 @@ namespace Lesson_09_10
             Console.WriteLine($"All: {result4b}");
             
             
+            // FirstOrDefault() - z.B. bei Where()
+            // ... gibt in der Liste das erste Elemente zurück oder falls die Liste leer ist wird NULL 
+            //                                                                           zurückgegeben
+            // Article? --> ? bedeutet, dass a auch null sein könnte 
+            // => Überprüfung auf NULL
+            Article? articleWithId3 = articles1.Where(a => a.Id == 3).FirstOrDefault();
+
+            if (articleWithId3 is not null)
+            {
+                // Daten ausgeben
+                Console.WriteLine($"ID: {articleWithId3.Id}");
+            }
+            else
+            {
+                Console.WriteLine("Artikel existiert nicht.");
+            }
+            
+            
+            // Projektion
+            // SQL ... SELECT * FROM ... --> alle Attribute auswählen
+            //         SELECT Titel, Price FROM ... --> nur bestimmte Attribute auswählen
+            // was bedeutet das?
+            // Projektion bedeutet, dass wir aus einer Datenquelle (z.B. einer Liste von Objekten)
+            // eine neue Form der Daten erstellen, indem wir nur bestimmte Eigenschaften auswählen
+            // oder die Daten in eine andere Struktur umwandeln.
+            // Beispiel: Wir haben eine Liste von Artikeln und wollen nur die Titel und Preise in
+
+            var result5b = from a in articles1
+                where a.Price > 100
+                                //Projektion
+                                // wir geben die Propertynamen an (Titel und Preis)
+                                // es wird vom Compiler eine anonyme Klasse (nur der Compiler kennt den Namen der Klasse)
+                                // inklusive aller Properties, Ctor, ToString() erzeugt
+                                select new
+                                {
+                                    Titel = a.Titel,
+                                    Preis = a.Price
+                                };
+            result5b.ToList().ForEach(a => Console.WriteLine(a));
+            
+            //5a selber --> select()
+            var result5a = from a in articles1
+                where a.category == Category.Book
+                    select new
+                    {
+                        Titel = a.Titel,
+                        Preis = a.Price
+                    };
+            result5a.ToList().ForEach(a => Console.WriteLine(a));
+            
+            // neues Projekt:
+            // ORM, schon angelegt
+            
+            
+            
+            
+            
             // Artikel-Liste erstellen
             List<Article> articles = CreateArticleList();
             
@@ -112,6 +170,7 @@ namespace Lesson_09_10
                 }
             }
         }
+        
 
         public static List<Article> CreateArticleList()
         {
