@@ -11,6 +11,8 @@ public class FileManager
 
         // Lädt Artikel aus der Textdatei und gibt eine Liste von Article-Objekten zurück
         // <returns>Liste von Article-Objekten</returns>
+        // warum über try catch?
+        
         public List<Article> LoadArticles()
         {
             List<Article> articles = new List<Article>();

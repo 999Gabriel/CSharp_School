@@ -28,6 +28,7 @@ namespace Lesson_09_10
             //alle beispiele in beiden Varianten 
             //  2 - bestimme alle Artikel des aktuellen Jahres (2025)
             //       überspringe die ersten 2 Artikel und verwende dann den nächsten Artikel
+            //      sortiert nach der Kategorie
             //          + Ausgabe + Überprüfung
             
             Console.WriteLine("\n=== LINQ - Artikel des Jahres 2025, überspringe 2, nimm 3 ===");
@@ -37,6 +38,26 @@ namespace Lesson_09_10
                 .Take(3);
             result2a.ToList().ForEach(a => Console.WriteLine($"{a.Titel} - {a.ReleaseDate:dd.MM.yyyy}"));
             Console.WriteLine("=== Artikel-Verwaltungssystem ===\n");
+            
+            // 3. alle Artikel bei denen im Titel und/oder Beschreibung irgend ein bestimmtes Wort vorkommt
+            //       3a - Erweiterungsmethode (EM)
+            var result3a = articles1.Where(a => a.Titel.Contains("T-Shirt") || a.Description.Contains("T-Shirt"));
+            Console.WriteLine("=== LINQ - Erweiterungsmethode ===");
+            result3a.ToList().ForEach(a => Console.WriteLine($"{a.Titel} - {a.Price:C}"));
+            //       3b - Abfrage-Syntax (AS)
+            var result3b = from a in articles1
+                                            where a.Titel.Contains("T-Shirt") || 
+                                                  a.Description.Contains("T-Shirt")
+                                            select a;
+            //4. Any() / All()
+            // - ermittle, ob bei allen Artikeln eine Kategorie angeg. wurde
+            // - ermittle, ob es zumindest einen Artikel in der Kategorie Shirts existiert
+            var result4a = articles1.Any(a => a.category == Category.Shirts);
+            var result4b = articles1.All(a => a.category == Category.Shirts);
+            Console.WriteLine("=== LINQ - Erweiterungsmethode ===");
+            Console.WriteLine($"Any: {result4a}");
+            Console.WriteLine($"All: {result4b}");
+            
             
             // Artikel-Liste erstellen
             List<Article> articles = CreateArticleList();
