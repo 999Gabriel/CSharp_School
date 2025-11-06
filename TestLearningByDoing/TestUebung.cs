@@ -34,7 +34,7 @@ namespace TestLearningByDoing
    Eingabe ungültig ist.
    Teil B – Code-Review (4 Punkte, ~4 Min)
    Lies den Ausschnitt und markiere zwei konkrete Design-/Fehlerstellen. Begründe jeweils kurz.
-   */
+   
   public class Article
   {
     public string ArticleName;
@@ -63,7 +63,7 @@ namespace TestLearningByDoing
    Teil C – Kleine Code-Aufgaben (4 Punkte, ~4 Min)
    C1) Robuste Eingabe nicht-leerer Strings (2P)
    Schreibe eine kleine Methode ReadNonEmpty(string prompt), die in einer Schleife nach Eingabe fragt, Trimming vornimmt und nur bei nicht-leer zurückkehrt.
-   */
+   
 
   public static string ReadNonEmpty(string prompt)
   {
