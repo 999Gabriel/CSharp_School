@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ORM.Services;
 using ORM.models;
 
@@ -30,6 +28,34 @@ namespace ORM
      *
      * update-database ... es werden alle noch nicht angewendeten Migrationen auf die Database angewendet
      * - erst zu diesem Zeitpunkt wird die Database tatsächlich verändert
+     *
+     * =================================================================================================================
+     *
+     * 13.11.2025
+     * Nur eine einzige Tabelle
+     * CRUD-Operationen
+     *  - GetAllArticlesAsync()
+     *  - GetArticlesByIdAsync()
+     *  - AddArticleAsync()
+     *  - RemoveArticleAsync()
+     *  - UpdateArticleAsync()
+     *
+     * Beziehungen
+     *  1:n-Beziehung (bsp Class: Article - Reviews)
+     *
+     *
+     * damit der ORM eine 1:n Beziehung erkennt (z.B. Article zu Reviews), muss ein Artikel eine
+     * List <R> und in R eine Instanz A enthalten sein.
+     * --> Navigation Properties
+     *
+     *
+     * CRUD-Operationen
+     *  - eine Review zu einem Artikel hinzufügen
+     *  - alle Reviews zu einem Artikel auslesen (Artikel und Reviews)
+     *  - Review zu einem Artikel ändern/updaten
+     *  - Review zu einem Artikel löschen
+     *  
+     * 
      */
     public class Program
     {
@@ -46,14 +72,19 @@ namespace ORM
                     Console.WriteLine("3. READ - Artikel nach ID suchen");
                     Console.WriteLine("4. UPDATE - Artikel aktualisieren");
                     Console.WriteLine("5. DELETE - Artikel löschen");
-                    Console.WriteLine("6. BEENDEN");
-                    Console.Write("Wähle eine Option (1-6): ");
+                    Console.WriteLine("6. CREATE - Review hinzufügen");
+                    Console.WriteLine("7. READ - Alle Reviews anzeigen");
+                    Console.WriteLine("8. UPDATE - Review aktualisieren");
+                    Console.WriteLine("9. DELETE - Review löschen");
+                    Console.WriteLine("10. BEENDEN");
+                    Console.Write("Wähle eine Option (1-10): ");
+
 
                     string choice = Console.ReadLine() ?? "";
 
                     switch (choice)
                     {
-                        case "1":
+                        /*case "1":
                             await CreateArticle(dbManager);
                             break;
                         case "2":
@@ -75,12 +106,30 @@ namespace ORM
                         default:
                             Console.WriteLine("❌ Ungültige Option!");
                             break;
+                            */
+                        case "6":
+                            await CreateReviewAsync(dbManager);
+                            break;
+                        case "7":
+                            await ReadAllReviewsAsync(dbManager);
+                            break;
+                        case "8":
+                            await UpdateReviewAsync(dbManager);
+                            break;
+                        case "9":
+                            await DeleteReviewAsync(dbManager);
+                            break;
+                        case "10":
+                            running = false;
+                            Console.WriteLine("Auf Wiedersehen!");
+                            break;
+                        
                     }
                 }
             }
         }
 
-        // ==================== CREATE ====================
+        /*// ==================== CREATE ====================
         private static async Task CreateArticle(DbManager dbManager)
         {
             Console.WriteLine("\n--- Neuer Artikel ---");
@@ -263,6 +312,140 @@ namespace ORM
             Console.WriteLine($"  Preis: € {article.Price:F2}");
             Console.WriteLine($"  Veröffentlichung: {article.ReleaseDate:yyyy-MM-dd}");
             Console.WriteLine();
+        }
+        */
+
+        
+        // ==================== CREATE REVIEW ====================
+        private static async Task CreateReviewAsync(DbManager dbManager)
+        {
+            Console.WriteLine("\n--- Neue Review hinzufügen ---");
+            Console.Write("Artikel-ID: ");
+            if (!int.TryParse(Console.ReadLine(), out int articleId))
+            {
+                Console.WriteLine("❌ Ungültige Artikel-ID!");
+                return;
+            }
+
+            var article = await dbManager.GetArticleByIdAsync(articleId);
+            if (article == null)
+            {
+                Console.WriteLine("❌ Artikel nicht gefunden!");
+                return;
+            }
+
+            Console.Write("Review-Text: ");
+            string reviewText = Console.ReadLine() ?? "";
+
+            Console.Write("Rating (1-5): ");
+            if (!int.TryParse(Console.ReadLine(), out int rating) || rating < 1 || rating > 5)
+            {
+                Console.WriteLine("❌ Ungültiges Rating!");
+                return;
+            }
+
+            Review newReview = new Review
+            {
+                ReviewText = reviewText,
+                Rating = rating,
+                ArticleId = articleId
+            };
+
+            if (await dbManager.CreateReviewAsync(newReview))
+            {
+                Console.WriteLine("✅ Review wurde hinzugefügt!");
+            }
+            else
+            {
+                Console.WriteLine("❌ Fehler beim Hinzufügen der Review!");
+            }
+        }
+
+// ==================== READ ALL REVIEWS ====================
+        private static async Task ReadAllReviewsAsync(DbManager dbManager)
+        {
+            Console.WriteLine("\n--- Alle Reviews ---");
+            await dbManager.GetAllReviewsAsync();
+        }
+
+// ==================== UPDATE REVIEW ====================
+        private static async Task UpdateReviewAsync(DbManager dbManager)
+        {
+            Console.Write("\nReview-ID zum Aktualisieren: ");
+            if (!int.TryParse(Console.ReadLine(), out int id))
+            {
+                Console.WriteLine("❌ Ungültige ID!");
+                return;
+            }
+
+            var review = await dbManager.Reviews.FirstOrDefaultAsync(r => r.ReviewId == id);
+            if (review == null)
+            {
+                Console.WriteLine("❌ Review nicht gefunden!");
+                return;
+            }
+
+            Console.WriteLine($"\nAktueller Text: {review.ReviewText}");
+            Console.WriteLine($"Aktuelles Rating: {review.Rating}");
+
+            Console.Write("\nNeuer Review-Text (oder Enter zum Überspringen): ");
+            string newText = Console.ReadLine() ?? "";
+            if (!string.IsNullOrEmpty(newText))
+                review.ReviewText = newText;
+
+            Console.Write("Neues Rating (1-5, oder Enter zum Überspringen): ");
+            string ratingInput = Console.ReadLine() ?? "";
+            if (!string.IsNullOrEmpty(ratingInput) && int.TryParse(ratingInput, out int newRating) && newRating >= 1 &&
+                newRating <= 5)
+                review.Rating = newRating;
+
+            if (await dbManager.UpdateReviewAsync(review))
+            {
+                Console.WriteLine("✅ Review wurde aktualisiert!");
+            }
+            else
+            {
+                Console.WriteLine("❌ Fehler beim Aktualisieren!");
+            }
+        }
+
+// ==================== DELETE REVIEW ====================
+        private static async Task DeleteReviewAsync(DbManager dbManager)
+        {
+            Console.Write("\nReview-ID zum Löschen: ");
+            if (!int.TryParse(Console.ReadLine(), out int id))
+            {
+                Console.WriteLine("❌ Ungültige ID!");
+                return;
+            }
+
+            var review = await dbManager.Reviews.FirstOrDefaultAsync(r => r.ReviewId == id);
+            if (review == null)
+            {
+                Console.WriteLine("❌ Review nicht gefunden!");
+                return;
+            }
+
+            Console.WriteLine($"\nReview: {review.ReviewText}");
+            Console.WriteLine($"Rating: {review.Rating}");
+            Console.Write("\nWirklich löschen? (ja/nein): ");
+            string confirm = Console.ReadLine()?.ToLower() ?? "";
+
+            if (confirm == "ja")
+            {
+                if (await dbManager.DeleteReviewAsync(review))
+                {
+                    Console.WriteLine("✅ Review wurde gelöscht!");
+                }
+                else
+                {
+                    Console.WriteLine("❌ Fehler beim Löschen!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("⚠️ Löschen abgebrochen!");
+            }
         }
     }
 }

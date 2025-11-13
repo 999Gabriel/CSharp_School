@@ -12,4 +12,9 @@ public class Article
     public Decimal Price { get; set; }
     public DateTime ReleaseDate { get; set; }
     
+    // Navigation Property (da zwischen Artikel und Review eine 1:n Beziehung besteht)
+    // --> eine Liste von Reviews zu diesem Artikel
+    public List<Review> Reviews { get; set; } = new();
+    
+    
 }

@@ -8,7 +8,17 @@ public class DbManager : DbContext
     // der DbManager ermöglicht uns den Zugriff auf die komplette Datenbank und 
     // aller Tabellen (über DbSet<T> Eigenschaften)
     // ermöglicht uns den Zugriff auf die Tabelle Articles
+    
+    
+    
+    // CURD Methoden für die Artikel-Tabelle
+    // C ... Create
+    // R ... Read
+    // U ... Update
+    // D ... Delete
+    
     public DbSet<Article> Articles { get; set; } = null!; // initialized to satisfy nullable analysis
+    public DbSet<Review> Reviews { get; set; } = null!; // initialized to satisfy nullable analysis
     
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
     { 
@@ -88,6 +98,66 @@ public class DbManager : DbContext
         catch (Exception ex)
         {
             Console.WriteLine($"Fehler beim Löschen des Artikels: {ex.Message}");
+            return false;
+        }
+    }
+    
+    // ===================== REVIEW Methods ====================
+    public async Task<bool> CreateReviewAsync(Review review)
+    {
+        try
+        {
+            Reviews.Add(review);
+            return await SaveChangesAsync() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Erstellen des Reviews: {ex.Message}");
+            return false;
+        }
+    }
+    public async Task<bool> GetAllReviewsAsync()   
+    {
+        try
+        {
+            var allReviews = await Reviews.Include(r => r.Article).ToListAsync();
+            foreach (var review in allReviews)
+            {
+                Console.WriteLine($"ReviewId: {review.ReviewId}, Rating: {review.Rating}, Article Title: {review.Article.Title}");
+            }
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Abrufen der Reviews: {ex.Message}");
+            return false;
+        }
+    }
+
+    public async Task<bool> UpdateReviewAsync(Review review)
+    {
+        try
+        {
+            Reviews.Update(review);
+            return await SaveChangesAsync() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Aktualisieren des Reviews: {ex.Message}");
+            return false;
+        }
+    }
+
+    public async Task<bool> DeleteReviewAsync(Review review)
+    {
+        try
+        {
+            Reviews.Remove(review);
+            return await SaveChangesAsync() > 0;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Fehler beim Löschen des Reviews: {ex.Message}");
             return false;
         }
     }
