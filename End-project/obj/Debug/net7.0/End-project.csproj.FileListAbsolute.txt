@@ -1,0 +1,15 @@
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/bin/Debug/net7.0/End-project
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/bin/Debug/net7.0/End-project.deps.json
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/bin/Debug/net7.0/End-project.runtimeconfig.json
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/bin/Debug/net7.0/End-project.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/bin/Debug/net7.0/End-project.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.AssemblyInfoInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.AssemblyInfo.cs
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.csproj.CoreCompileInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/refint/End-project.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.genruntimeconfig.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/ref/End-project.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/End-project/obj/Debug/net7.0/End-project.sourcelink.json

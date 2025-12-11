@@ -1,0 +1,15 @@
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/bin/Debug/net9.0/TestLearningByDoing
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/bin/Debug/net9.0/TestLearningByDoing.deps.json
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/bin/Debug/net9.0/TestLearningByDoing.runtimeconfig.json
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/bin/Debug/net9.0/TestLearningByDoing.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/bin/Debug/net9.0/TestLearningByDoing.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.AssemblyInfoInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.AssemblyInfo.cs
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.csproj.CoreCompileInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.sourcelink.json
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/refint/TestLearningByDoing.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/TestLearningByDoing.genruntimeconfig.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/TestLearningByDoing/obj/Debug/net9.0/ref/TestLearningByDoing.dll

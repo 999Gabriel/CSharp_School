@@ -1,0 +1,15 @@
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.GeneratedMSBuildEditorConfig.editorconfig
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.AssemblyInfoInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.AssemblyInfo.cs
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.csproj.CoreCompileInputs.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.sourcelink.json
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/bin/Debug/net9.0/Csharp-code-school
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/bin/Debug/net9.0/Csharp-code-school.deps.json
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/bin/Debug/net9.0/Csharp-code-school.runtimeconfig.json
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/bin/Debug/net9.0/Csharp-code-school.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/bin/Debug/net9.0/Csharp-code-school.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/refint/Csharp-code-school.dll
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.pdb
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/Csharp-code-school.genruntimeconfig.cache
+/Users/gabriel/RiderProjects/Csharp-code-school/Csharp-code-school/obj/Debug/net9.0/ref/Csharp-code-school.dll
