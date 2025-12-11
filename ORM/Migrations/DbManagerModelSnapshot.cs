@@ -49,6 +49,47 @@ namespace ORM.Migrations
                     b.ToTable("Articles");
                 });
 
+            modelBuilder.Entity("ORM.models.Invoice", b =>
+                {
+                    b.Property<int>("InvoiceId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("InvoiceId"));
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<DateTime>("InvoiceDate")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<decimal>("TotalAmount")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("InvoiceId");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("ORM.models.InvoiceArticle", b =>
+                {
+                    b.Property<int>("InvoiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("InvoiceId", "ArticleId");
+
+                    b.HasIndex("ArticleId");
+
+                    b.ToTable("InvoiceArticles");
+                });
+
             modelBuilder.Entity("ORM.models.Review", b =>
                 {
                     b.Property<int>("ReviewId")
@@ -74,6 +115,81 @@ namespace ORM.Migrations
                     b.ToTable("Reviews");
                 });
 
+            modelBuilder.Entity("ORM.models.User", b =>
+                {
+                    b.Property<string>("SocialSecurityNumber")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("socialsecuritynumber");
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("birthdate");
+
+                    b.Property<string>("Firstname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("firstname");
+
+                    b.Property<string>("Lastname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("lastname");
+
+                    b.HasKey("SocialSecurityNumber");
+
+                    b.ToTable("members");
+                });
+
+            modelBuilder.Entity("ORM.models.User2", b =>
+                {
+                    b.Property<string>("SocialSecurityNumber")
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("socialsecuritynumber");
+
+                    b.Property<DateTime>("Birthdate")
+                        .HasColumnType("datetime(6)")
+                        .HasColumnName("birthdate");
+
+                    b.Property<string>("Firstname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("firstname");
+
+                    b.Property<string>("Lastname")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar(100)")
+                        .HasColumnName("lastname");
+
+                    b.HasKey("SocialSecurityNumber");
+
+                    b.ToTable("members2", (string)null);
+                });
+
+            modelBuilder.Entity("ORM.models.InvoiceArticle", b =>
+                {
+                    b.HasOne("ORM.models.Article", "Article")
+                        .WithMany("InvoiceArticles")
+                        .HasForeignKey("ArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ORM.models.Invoice", "Invoice")
+                        .WithMany("InvoiceArticles")
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Article");
+
+                    b.Navigation("Invoice");
+                });
+
             modelBuilder.Entity("ORM.models.Review", b =>
                 {
                     b.HasOne("ORM.models.Article", "Article")
@@ -87,7 +203,14 @@ namespace ORM.Migrations
 
             modelBuilder.Entity("ORM.models.Article", b =>
                 {
+                    b.Navigation("InvoiceArticles");
+
                     b.Navigation("Reviews");
+                });
+
+            modelBuilder.Entity("ORM.models.Invoice", b =>
+                {
+                    b.Navigation("InvoiceArticles");
                 });
 #pragma warning restore 612, 618
         }

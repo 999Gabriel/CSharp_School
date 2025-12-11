@@ -15,6 +15,7 @@ public class Article
     // Navigation Property (da zwischen Artikel und Review eine 1:n Beziehung besteht)
     // --> eine Liste von Reviews zu diesem Artikel
     public List<Review> Reviews { get; set; } = new();
+    public List<InvoiceArticle> InvoiceArticles { get; set; } = new();
     
     
 }

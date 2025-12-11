@@ -54,7 +54,41 @@ namespace ORM
      *  - alle Reviews zu einem Artikel auslesen (Artikel und Reviews)
      *  - Review zu einem Artikel ändern/updaten
      *  - Review zu einem Artikel löschen
+     *
+     *
+     *
+     * m:n Beziehung
+     * SQL: m:n-Beziehungen müssen immer in 2 1:n-Beziehungen aufgelöst werden
+     *  Aus A -- B wird A -- A_B -- B (1:n und n:1)
+     *  Die n-Seite ist dabei immer dort wo die PK (FK) sich befinden (in A_B).
+     *
+     *
+     * Fall 1:
+     *  befinden sich in der Zwischentabelle nur die PK von A bzw B (keine zusätzlichen Felder), dann
+     *  kann der ORM die Zwischenklasse selber erzeugen.
+     *
      *  
+     *
+     * Fall 2:
+     *
+     *  Befinden sich in der Zwischentabelle neben den PK vonn A bzw B weitere Felder
+     *  dann muss die Zwischenklasse A_B ausprogrammiert werden.
+     *
+     * ORM:
+     *  in A muss eine List<A_B>
+     *  in B muss eine List<A_B>
+     *  in A_B muss eine Instanz von A und eine Instanz von B
+     *
+     *
+     * CRUD-Operationen
+     *  -   eine Invoice mit mehreren Artikeln erzeugen
+     *  -   eine Invoice inkl. aller Artikel ermitteln
+     *  -   Anzahl eines best. Artikels ändern
+     *  -   Invoice löschen
+     *  
+     *
+     *
+     *
      * 
      */
     public class Program
