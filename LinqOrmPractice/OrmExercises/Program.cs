@@ -182,6 +182,8 @@ namespace OrmExercises
                 Console.WriteLine($"Order erstellt mit ID: {order.OrderId}");
             }
             
+            // Starte die fortgeschrittenen Übungen
+            await AdvancedOrmExercises.RunAsync();
 
             Console.WriteLine("\nDrücke eine Taste zum Beenden...");
             Console.ReadKey();

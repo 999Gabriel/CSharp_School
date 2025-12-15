@@ -7,7 +7,7 @@ namespace LinqExercises
     {
         static void Main(string[] args)
         {
-            var students = Data.GetStudents();
+            var students = Data.GetStudents();  
             var courses = Data.GetCourses();
 
             Console.WriteLine("========== LINQ ÜBUNGEN ==========");
@@ -158,6 +158,9 @@ namespace LinqExercises
             // Dein Code hier:
             var avergeAge = students.Average(s => s.Age);
             Console.WriteLine($"Das Durchschnittsalter der Studenten ist: {avergeAge}");
+
+            // Starte die fortgeschrittenen Übungen
+            AdvancedLinqExercises.Run();
 
             Console.WriteLine("\nDrücke eine Taste zum Beenden...");
             Console.ReadKey();
