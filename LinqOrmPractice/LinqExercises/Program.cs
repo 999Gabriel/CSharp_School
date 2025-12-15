@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Common;
 using System.Linq;
 
 namespace LinqExercises
@@ -80,6 +81,7 @@ namespace LinqExercises
             // AUFGABE 4: Gruppiere die Studenten nach ihrem Alter.
             Console.WriteLine("\n--- Aufgabe 4: Gruppierung nach Alter ---");
             // Dein Code hier:
+            
             var groupedByAge = students.Select
                 (
                     s => new {s.Name, s.Age}
@@ -93,6 +95,7 @@ namespace LinqExercises
                 {
                     Console.WriteLine($" - {student.Name}");
                 }
+                
             }
 
 
@@ -130,8 +133,10 @@ namespace LinqExercises
             // Dein Code hier:
             var studentCourses = from s in students
                 join course in courses on s.CourseId equals course.Id
-                    group new {s, course} by s.Name into scGroup
-                    select scGroup.First();
+                group new { s, course } by s.Name
+                into scGroup
+                select scGroup.First(); 
+                    
 
             foreach (var course in studentCourses)
             {

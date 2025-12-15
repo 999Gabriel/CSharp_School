@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrmExercises")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+483e80dd61ec39a0a7ffccc07bff0a690f1a8282")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+287e274c47d1b2a05635031dfc6f669c55f0acca")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrmExercises")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrmExercises")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
