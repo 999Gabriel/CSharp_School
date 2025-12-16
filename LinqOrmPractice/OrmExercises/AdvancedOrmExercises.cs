@@ -107,10 +107,12 @@ namespace OrmExercises
                     .Take(2)
                     .Select(p => p.Price)
                     .ToList();
+                
+                
 
                 foreach (var price in top2Expensive)
                 {
-                    Console.WriteLine($"Formatted Price: {price:N2} €");
+                    Console.WriteLine($"Formatted Price: {price:N2} €, Mehrwertsteuer: {price * 0.19m:N2} €");
                 }
 
                 /*
