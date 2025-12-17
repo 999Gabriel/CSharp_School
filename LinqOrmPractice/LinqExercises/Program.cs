@@ -18,10 +18,8 @@ namespace LinqExercises
              * Was ist der Unterschied zwischen Query Syntax und Method Syntax in LINQ?
              * 
              * Antwort:
-             * der unterschied liegt in der Schreibweise:
-             * - Query Syntax ähnelt SQL und verwendet Schlüsselwörter wie from, where, select
-             * - Method Syntax verwendet Methodenaufrufe wie .Where(), .Select()
-             * beide Ansätze führen zum gleichen Ergebnis und können oft ineinander umgewandelt werden.
+             * Query Syntax ähnelt SQL und verwendet Schlüsselwörter wie from, where und select usw.
+             * Method Syntax verwendet Methodenaufrufe wie .Where(), .Select() usw. und ist oft kürzer.
              * 
              */
 
@@ -32,96 +30,85 @@ namespace LinqExercises
                 where s.Age > 21
                 select s;
 
-            Console.WriteLine($"Die folgenden Studenten sind älter als 21:");
-            foreach (var s in olderThan21) Console.WriteLine($"{s.Name} ({s.Age})");
-
+            foreach (var student in olderThan21)
+            {
+                Console.WriteLine($"Name: {student.Name}, Age: {student.Age}");
+            }
 
             /*
              * THEORIE FRAGE 2:
              * Was bewirkt die Methode .ToList() am Ende einer LINQ-Abfrage und warum ist das wichtig (Deferred Execution)?
-             * 
+             *
              * Antwort:
-             * .ToList() konvertiert das Ergebnis einer LINQ-Abfrage in eine Liste und erzwingt die sofortige
-             * Ausführung der Abfrage.
-             * Ohne .ToList() wird die Abfrage erst ausgeführt, wenn auf die Daten zugegriffen wird
-             * (Deferred Execution).
+             * .ToList() führt die Abfrage sofort aus und speichert die Ergebnisse in einer Liste.
+             * Ohne .ToList() wird die Abfrage erst ausgeführt, wenn auf die Daten zugegriffen wird (Deferred Execution).
+             * Das ist wichtig, um die Leistung zu optimieren und unerwartete Änderungen an den Daten zu vermeiden.
              * 
              */
 
             // AUFGABE 2: Projiziere eine Liste, die nur die Namen der Studenten enthält.
             Console.WriteLine("\n--- Aufgabe 2: Nur Namen der Studenten ---");
             // Dein Code hier:
-            var studentNames = students.Select(s => s.Name).ToList();
-            Console.WriteLine("Studentennamen:");
-            foreach (var name in studentNames) Console.WriteLine(name);
-
+            var studentNames = from s in students
+                select s.Name;
 
             // AUFGABE 3: Sortiere die Studenten nach Alter absteigend.
             Console.WriteLine("\n--- Aufgabe 3: Studenten sortiert nach Alter (absteigend) ---");
             // Dein Code hier:
             var sortedByAgeDesc = students
                 .OrderByDescending(s => s.Age)
-                .Select(s => s.Name)
                 .ToList();
-            Console.WriteLine("Studenten sortiert nach Alter (absteigend):");
-            foreach (var name in sortedByAgeDesc) Console.WriteLine(name);
 
+            foreach (var student in sortedByAgeDesc)
+            {
+                Console.WriteLine($"Name: {student.Name}, Age: {student.Age}");
+            }
 
             /*
              * THEORIE FRAGE 3:
              * Wofür wird 'GroupBy' verwendet? Gib ein Beispiel.
-             * 
+             *
              * Antwort:
-             * GroupBy wird verwendet, um Elemente in einer Sammlung basierend auf einem gemeinsamen Schlüssel zu
-             * gruppieren.
-             * Beispiel: Gruppiere Studenten nach ihrem Alter, um zu sehen, wie viele Studenten jedes Alters es gibt.
-             * 
+             * GroupBy wird verwendet, um Elemente basierend auf einem gemeinsamen Schlüssel zu gruppieren.
+             * Beispiel: Gruppiere Studenten nach ihrem Alter, um alle Studenten desselben Alters zusammenzufassen.
+             *
              */
 
             // AUFGABE 4: Gruppiere die Studenten nach ihrem Alter.
             Console.WriteLine("\n--- Aufgabe 4: Gruppierung nach Alter ---");
             // Dein Code hier:
+            var groupedByAge = from s in students
+                group s by s.Age
+                into ageGroup
+                select ageGroup;
             
-            var groupedByAge = students.Select
-                (
-                    s => new {s.Name, s.Age}
-                )
-                .GroupBy(s => s.Age)
-                .ToList();
             foreach (var ageGroup in groupedByAge)
             {
                 Console.WriteLine($"Alter: {ageGroup.Key}");
                 foreach (var student in ageGroup)
                 {
-                    Console.WriteLine($" - {student.Name}");
+                    Console.WriteLine($"- {student.Name}");
                 }
-                
-            }
-
-
+            }  
+            
             /*
              * THEORIE FRAGE 4:
              * Erkläre den Unterschied zwischen .First(), .FirstOrDefault(), .Single() und .SingleOrDefault().
              *
              * Antwort:
-             * - .First(): Gibt das erste Element einer Sequenz zurück. Wirft eine Ausnahme, wenn die Sequenz leer ist.
-             * - .FirstOrDefault(): Gibt das erste Element einer Sequenz zurück oder den Standard
-             * Wert (z.B. null), wenn die Sequenz leer ist.
-             * - .Single(): Gibt das einzige Element einer Sequenz zurück. Wirft eine Ausnahme
-             * wenn die Sequenz leer ist oder mehr als ein Element enthält.
-             * - .SingleOrDefault(): Gibt das einzige Element einer Sequenz zurück oder den Standard
-             * Wert (z.B. null), wenn die Sequenz leer ist. Wirft eine
-             * Ausnahme, wenn die Sequenz mehr als ein Element enthält.
+             * .First() gibt das erste Element zurück und wirft eine Ausnahme, wenn die Sequenz leer ist.
+             * .FirstOrDefault() gibt das erste Element zurück oder den Standardwert (null), wenn die Sequenz leer ist.
              *
              */
 
             // AUFGABE 5: Finde den ersten Studenten, der "David" heißt.
             Console.WriteLine("\n--- Aufgabe 5: Finde David ---");
             // Dein Code hier:
-            var david = students.FirstOrDefault(s => s.Name == "David");
-            if (david != null)
+            var studentDavid = students
+                .FirstOrDefault(s => s.Name == "David");
+            if (studentDavid != null)
             {
-                Console.WriteLine($"Gefundener Student: {david.Name}, Alter: {david.Age}");
+                Console.WriteLine($"Gefundener Student: {studentDavid.Name}, Age: {studentDavid.Age}");
             }
             else
             {
@@ -132,16 +119,18 @@ namespace LinqExercises
             Console.WriteLine("\n--- Aufgabe 6: Join Studenten und Kurse ---");
             // Dein Code hier:
             var studentCourses = from s in students
-                join course in courses on s.CourseId equals course.Id
-                group new { s, course } by s.Name
-                into scGroup
-                select scGroup.First(); 
-                    
-
-            foreach (var course in studentCourses)
+                join c in courses on s.CourseId equals c.Id
+                select new 
+                {
+                    StudentName = s.Name, 
+                    CourseTitle = c.Title
+                };
+            
+            foreach (var sc in studentCourses)
             {
-                Console.WriteLine($"{course.s.Name} - {course.course.Title}");
+                Console.WriteLine($"{sc.StudentName} - {sc.CourseTitle}");
             }
+
 
 
             /*
@@ -149,20 +138,16 @@ namespace LinqExercises
              * Was ist der Unterschied zwischen .Select() und .SelectMany()?
              *
              * Antwort:
-             * - .Select(): Projiziert jedes Element einer Sequenz in eine neue Form.
-             * - .SelectMany(): Projiziert jedes Element einer Sequenz in eine IEnumerable und
-             * flacht die resultierenden Sequenzen zu einer einzigen Sequenz ab.
-             * Beispiel: Wenn du eine Liste von Studenten hast, bei denen jeder Student
-             * eine Liste von Kursen belegt hat, kannst du mit .SelectMany() alle
-             * Kurse aller Studenten in einer einzigen Liste erhalten.
-             *
+             * .Select() projiziert jedes Element in eine neue Form.
+             * .SelectMany() projiziert jedes Element in eine Sequenz und flacht die resultierende Sequenz ab.
              */
             
             // AUFGABE 7: Berechne das Durchschnittsalter aller Studenten.
             Console.WriteLine("\n--- Aufgabe 7: Durchschnittsalter ---");
             // Dein Code hier:
-            var avergeAge = students.Average(s => s.Age);
-            Console.WriteLine($"Das Durchschnittsalter der Studenten ist: {avergeAge}");
+            var avgAge = students.Average(s => s.Age);
+            
+            Console.WriteLine($"Durchschnittsalter der Studenten: {avgAge}");
 
             // Starte die fortgeschrittenen Übungen
             AdvancedLinqExercises.Run();

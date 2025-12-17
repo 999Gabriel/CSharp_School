@@ -45,7 +45,7 @@ namespace Probetest2
              * aber auch getter und setter Methoden, die den Zugriff auf die Eigenschaften der Klasse kontrollieren.
              *
              */
-
+            
 
             /*
              * AUFGABE 2: DATEI-HANDLING
@@ -134,17 +134,21 @@ namespace Probetest2
              */
             Console.WriteLine("\n--- Aufgabe 3a: LINQ Query Syntax ---");
             // Dein Code hier:
-            var filteredAccounts = from account in accounts
+            var maleAccountsQuery = from account in accounts
                 where account.Gender == Gender.Male && account.Balance <= -1000m
-                select account;
+                orderby account.LastName // <-- das hat aus gefehlt ist aber nötig für die Sortierung
+                select new
+                {
+                    account.AccountId,
+                    account.LastName,
+                    account.Balance,
+                    account.Gender // <-- das hat davor gefehlt 
+                };
 
-            foreach (var acc in filteredAccounts)
+            foreach (var acc in maleAccountsQuery)
             {
-                Console.WriteLine(
-                    $"AccountId: {acc.AccountId}, Nachname: {acc.LastName}, Kontobetrag: {acc.Balance}, " +
-                    $"Geschlecht: {acc.Gender}");
+                Console.WriteLine($"AccountId: {acc.AccountId}, Nachname: {acc.LastName}, Kontobetrag: {acc.Balance}€");
             }
-
 
             /*
              * b) Ermittle alle Accounts, gruppiert nach dem Geschlecht.
@@ -153,15 +157,16 @@ namespace Probetest2
             Console.WriteLine("\n--- Aufgabe 3b: LINQ Grouping ---");
             // Dein Code hier:
             var groupedAccounts = from account in accounts
-                group account by account.Gender;
+                group account by account.Gender into genderGroup
+                select genderGroup;
 
-            foreach (var groupedAccount in groupedAccounts)
+            foreach (var gender in groupedAccounts)
             {
-                Console.WriteLine($"Geschlecht: {groupedAccount.Key}");
-                foreach (var acc in groupedAccount)
+                Console.WriteLine($"Geschlecht: {gender.Key}");
+                // zuvor hat die innere foreach schleife auch noch gefehlt ist aber auch nötig für die Ausgabe
+                foreach (var account in gender)
                 {
-                    Console.WriteLine(
-                        $"  AccountId: {acc.AccountId}, Nachname: {acc.LastName}, Kontobetrag: {acc.Balance}");
+                    Console.WriteLine($"  AccountId: {account.AccountId}, Nachname: {account.LastName}, Kontobetrag: {account.Balance}€");
                 }
             }
 
@@ -171,11 +176,8 @@ namespace Probetest2
              *
              * ANTWORT:
              * Lambda-Ausdrücke sind anonyme Funktionen, die verwendet werden, um kurze Codeblöcke zu definieren.
-             * Sie werden oft in LINQ-Abfragen verwendet, um Operationen wie Filtern, Sortieren und Transformieren von Daten durchzuführen.
-             * Ein Lambda-Ausdruck besteht aus Eingabeparametern, dem Lambda-Operator "=>" und einem Ausdruck oder Block von Anweisungen.
-             * Beispiel:
-             * var evenNumbers = numbers.Where(n => n % 2 == 0).ToList();
-             * In diesem Beispiel filtert der Lambda-Ausdruck "n => n % 2 == 0" die geraden Zahlen aus der Liste "numbers".
+             * ein Beispiel für einen Lambda-Ausdruck ist:
+             * Func<int, int> square = x => x * x;
              *
              */
 

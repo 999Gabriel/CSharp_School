@@ -15,15 +15,6 @@ namespace Probetest1
         public string Name { get; set; }
         public decimal Price { get; set; }
 
-        // Navigation Property für die Beziehung (m:n oder 1:n)
-        // Da ein Artikel in mehreren Baskets sein kann und ein Basket mehrere Artikel hat,
-        // ist m:n am sinnvollsten. Aber oft wird in solchen Schulaufgaben 1:n (Basket -> Article)
-        // oder m:n vereinfacht verlangt.
-        // Laut Aufgabe: "Beachte beim Programmieren der Klassen die Beziehung zwischen Basket und Article."
-        // "Verwende den beste Beziehungstyp".
-        // Ein Artikel (z.B. "iPhone") kann in vielen Warenkörben liegen.
-        // Ein Warenkorb hat viele Artikel. -> m:n (Many-to-Many).
-        
         // Für EF Core m:n brauchen wir eine Liste von Baskets
         public List<Basket> Baskets { get; set; } = new List<Basket>();
     }
@@ -54,7 +45,7 @@ namespace Probetest1
             var connectionString = "server=localhost;user=root;password=Nij43Bq8;database=probetest_db";
             var serverVersion = new MySqlServerVersion(new System.Version(8, 0, 29));
             optionsBuilder.UseMySql(connectionString, serverVersion);
-            
+
             // Für Logging (optional, hilft beim Debuggen)
             optionsBuilder.LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
         }
@@ -78,34 +69,36 @@ namespace Probetest1
 
             /*
              * AUFGABE 1: THEORIE
-             * 
+             *
              * a) Erkläre, welche Beziehung du zwischen Basket und Article verwendest und wieso.
              * ANTWORT:
-             * Ich verwende eine Many-to-Many (m:n) Beziehung.
-             * Begründung: Ein Warenkorb (Basket) kann mehrere Artikel enthalten. Gleichzeitig kann derselbe Artikel
-             * (z.B. ein spezifisches Produkt wie "USB-Stick") in den Warenkörben von mehreren verschiedenen Usern liegen.
-             * Daher ist m:n der logischste Beziehungstyp.
+             * zwischen Basket und Article wird eine 1:n Beziehung verwendet, da ein Warenkorb mehrere Artikel haben kann,
+             * und ein Artikel zu genau einem Warenkorb gehört.
+             *
+             * RICHTIG:
+             * wir haben eine m:n Beziehung, da ein Basket mehrere Articles enthalten kann,
+             * und ein Article in mehreren Baskets enthalten sein kann.
+             * Beispiel: Ein Artikel "Mouse" kann in den Baskets von User1 und User2 enthalten sein.
+             * 
              * 
              * b) Wie wird die obige Beziehung programmiert?
              * ANTWORT:
-             * In EF Core wird dies durch Collection-Properties in beiden Klassen realisiert.
-             * Klasse Basket hat: public List<Article> Articles { get; set; }
-             * Klasse Article hat: public List<Basket> Baskets { get; set; }
-             * EF Core erstellt automatisch eine Zwischentabelle (Join Table) in der Datenbank.
+             * einne 1:n Bzeihung wird programmiert, indem in der Klasse Basket eine List von Articles als Navigation
+             * Property definiert wird, und in der Klasse Article eine Referenz auf den Basket als Navigation Property.
              * 
+             *
              * c) Erkläre alle Beziehungstypen zwischen 2 Klassen und wie diese programmiert werden.
              * ANTWORT:
-             * 1. One-to-One (1:1):
-             *    Ein Datensatz gehört genau zu einem anderen.
-             *    Code: Referenz-Property auf beiden Seiten (z.B. User.Profile und Profile.User).
-             *    
-             * 2. One-to-Many (1:n):
-             *    Ein Datensatz hat viele Kind-Datensätze (z.B. Blog -> Posts).
-             *    Code: Die "One"-Seite hat eine List<Child>, die "Many"-Seite hat eine Referenz und einen Foreign Key.
-             *    
-             * 3. Many-to-Many (m:n):
-             *    Viele Datensätze sind mit vielen anderen verknüpft (z.B. Student <-> Kurs).
-             *    Code: List<T> auf beiden Seiten. EF Core nutzt eine Zwischentabelle.
+             * es gibt 3 Arten von Beziehungen:
+             * 1. 1:n: eine Klasse hat eine Liste von Objekten der anderen Klasse, und die andere Klasse hat eine
+             * Referenz auf die erste Klasse.
+             * 2. n:1: eine Klasse hat eine Referenz auf die andere Klasse, und die andere Klasse hat eine
+             * Liste von Objekten der ersten Klasse.
+             * 3. m:n: beide Klassen haben eine Liste von Objekten der jeweils anderen Klasse.
+             * Bei m:n Beziehungen wird in EF Core automatisch eine Zwischentabelle erstellt.
+             * eine Zwischentabelle ist eine zusätzliche Klasse, die die Primärschlüssel beider Klassen als
+             * Fremdschlüssel enthält. Sie dient dazu, die m:n Beziehung zu modellieren.
+             * 
              */
 
             // AUFGABE 2: HAUPTPROGRAMM
@@ -114,55 +107,74 @@ namespace Probetest1
             {
                 using (var db = new DbManager())
                 {
-                    db.Database.EnsureCreated();
-                    Console.WriteLine("Datenbank und Tabellen wurden erstellt (falls nicht vorhanden).");
-
-                    // Hier könnten weitere Operationen folgen, z.B. Daten einfügen, abfragen, etc.
-                    //a) Neue Basket und Article Objekte erzeugen und speichern
-                    var article1 = new Article()
-                    {
-                        ArticleNumber = 1,
-                        Name = "Laptop",
-                        Price = 1000m
-                    };
-                    var article2 = new Article()
-                    {
-                        ArticleNumber = 2,
-                        Name = "Smartphone",
-                        Price = 500m
-                    };
-                    var basket = new Basket()
+                    // 1. Aufgabe: Erstelle eine Order und füge die "Mouse" 2 mal hinzu (m:n Beziehung).
+                    Console.WriteLine("\n--- Aufgabe 2: Erstelle eine Order und füge die 'Mouse' 2 mal hinzu ---");
+                    // Artikel erstellen
+                    Article mouseArticle = new Article();
+                    mouseArticle.ArticleNumber = 1;
+                    mouseArticle.Name = "Mouse";
+                    mouseArticle.Price = 40m;
+                    
+                    Article mouseArticle2 = new Article();
+                    mouseArticle2.ArticleNumber = 2;
+                    mouseArticle2.Name = "Mouse 2";
+                    mouseArticle2.Price = 450m;
+                    
+                    //Basket erstellen
+                    Basket basket = new Basket()
                     {
                         BasketId = 1,
                         UserId = "917",
-                        Articles = new List<Article> { article1, article2 }
                     };
-
-                    db.Baskets.Add(basket);
-                    db.Articles.Add(article1);
-                    db.Articles.Add(article2);
-                    db.SaveChangesAsync();
                     
-                    //b) Alle Baskets mit ihren Artikeln auslesen und ausgeben
-                    var basketsWithArticles = db.Baskets
-                        .Where(b => b.UserId == "917")
-                        .Include(b => b.Articles);
+                    // Artikel dem Warenkorb hinzufügen
+                    basket.Articles.Add(mouseArticle);
+                    basket.Articles.Add(mouseArticle2);
+                    // Warenkorb dem Artikel hinzufügen (für m:n Beziehung)
+                    mouseArticle.Baskets.Add(basket);
+                    mouseArticle2.Baskets.Add(basket);
+                    // In die Datenbank einfügen
+                    db.Articles.Add(mouseArticle);
+                    db.Articles.Add(mouseArticle2);
+                    db.Baskets.Add(basket);
+                    // FALSCH:
+                    // db.SaveChanges();
+                    // if (db.SaveChanges() > 0) { ... }
 
-                    foreach (var b in basketsWithArticles)
+                    // RICHTIG:
+                    if (db.SaveChanges() > 0)
                     {
-                        Console.WriteLine($"Basket ID : {b.BasketId} +  User ID: {b.UserId}");
-                        foreach (var a in b.Articles)
+                        Console.WriteLine("Artikel und Warenkorb erfolgreich hinzugefügt.");
+                    }
+                    else 
+                    {
+                        // Dies passiert, wenn keine Änderungen erkannt wurden (nicht zwingend ein Fehler, aber hier unerwartet)
+                        Console.WriteLine("Keine Änderungen gespeichert.");
+                    }
+
+                    // 2. Aufgabe: Lade alle Warenkörbe für den User mit der UserId "917" und gib die enthaltenen
+                    // Artikel aus.
+                    Console.WriteLine("\n--- Aufgabe 3: Lade alle Warenkörbe für UserId '917' und gib die Artikel aus ---");
+                    var userBasket = db.Baskets
+                        .Where(b => b.UserId == "917")
+                        .Include(b => b.Articles)
+                        .ToList();
+                    foreach (var b in userBasket)
+                    {
+                        Console.WriteLine($"Warenkorb ID: {b.BasketId}, User ID: {b.UserId}");
+                        foreach (var art in b.Articles)
                         {
-                            Console.WriteLine($"-- Article Number: {a.ArticleNumber}, Name: {a.Name}, Price: {a.Price}");
+                            Console.WriteLine($" - Artikelnummer: {art.ArticleNumber}, Name: {art.Name}, Preis: {art.Price}");
                         }
                     }
+                    
+                    // Ende
+                    Console.WriteLine("\n========== ENDE PROBETEST 1 ==========");
                 }
-                
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                Console.WriteLine($"Fehler: {e.Message}");
-                throw;
+                Console.WriteLine($"Fehler: {ex.Message}");
             }
         }
     }
