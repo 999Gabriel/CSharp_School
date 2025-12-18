@@ -1,0 +1,25 @@
+Using launch settings from /Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/Properties/launchSettings.json...
+Building...
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277: Found conflicts between different versions of "Microsoft.EntityFrameworkCore.Relational" that could not be resolved. [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277: There was a conflict between "Microsoft.EntityFrameworkCore.Relational, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" and "Microsoft.EntityFrameworkCore.Relational, Version=9.0.11.0, Culture=neutral, PublicKeyToken=adb9793829ddae60". [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:     "Microsoft.EntityFrameworkCore.Relational, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" was chosen because it was primary and "Microsoft.EntityFrameworkCore.Relational, Version=9.0.11.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" was not. [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:     References which depend on "Microsoft.EntityFrameworkCore.Relational, Version=9.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" [/Users/gabriel/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll]. [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:         /Users/gabriel/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:           Project file item includes which caused reference "/Users/gabriel/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll". [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:             /Users/gabriel/.nuget/packages/microsoft.entityframeworkcore.relational/9.0.0/lib/net8.0/Microsoft.EntityFrameworkCore.Relational.dll [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:     References which depend on or have been unified to "Microsoft.EntityFrameworkCore.Relational, Version=9.0.11.0, Culture=neutral, PublicKeyToken=adb9793829ddae60" []. [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:         /tmp/Web_API_Build_Artifacts/ORM/bin/Debug/net9.0/ORM.dll [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:           Project file item includes which caused reference "/tmp/Web_API_Build_Artifacts/ORM/bin/Debug/net9.0/ORM.dll". [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+/usr/local/share/dotnet/sdk/9.0.306/Microsoft.Common.CurrentVersion.targets(2433,5): warning MSB3277:             /tmp/Web_API_Build_Artifacts/ORM/bin/Debug/net9.0/ORM.dll [/Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server/API_Server.csproj]
+warn: Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServer[8]
+      The ASP.NET Core developer certificate is not trusted. For information about trusting the ASP.NET Core developer certificate, see https://aka.ms/aspnet/https-trust-dev-cert
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: https://localhost:7133
+info: Microsoft.Hosting.Lifetime[14]
+      Now listening on: http://localhost:5231
+info: Microsoft.Hosting.Lifetime[0]
+      Application started. Press Ctrl+C to shut down.
+info: Microsoft.Hosting.Lifetime[0]
+      Hosting environment: Development
+info: Microsoft.Hosting.Lifetime[0]
+      Content root path: /Users/gabriel/4BHWII:2025-26/C#/Web_API/API_Server

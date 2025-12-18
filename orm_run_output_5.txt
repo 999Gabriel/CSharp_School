@@ -1,0 +1,19 @@
+Resetting database...
+Tables before drop: __EFMigrationsHistory, Articles, Reviews
+Tables after drop: 
+Applying migrations and checking for seed data...
+Seeding database with initial data...
+Database seeded successfully!
+
+========== CRUD MENÜ ==========
+1. CREATE - Artikel hinzufügen
+2. READ - Alle Artikel anzeigen
+3. READ - Artikel nach ID suchen
+4. UPDATE - Artikel aktualisieren
+5. DELETE - Artikel löschen
+6. CREATE - Review hinzufügen
+7. READ - Alle Reviews anzeigen
+8. UPDATE - Review aktualisieren
+9. DELETE - Review löschen
+10. BEENDEN
+Wähle eine Option (1-10): Auf Wiedersehen!

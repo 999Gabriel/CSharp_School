@@ -20,7 +20,7 @@ namespace API_Server
             // DI (Dependency Injection)
             // Wir geben den DI-Container den Namen der Klasse bekannt, der DI-Container verwaltet
             // (erzeugt, l�scht, usw...) die DB-Manager-Instanz
-            builder.Services.AddDbContext<DBManager>();
+            builder.Services.AddDbContext<DbManager>();
 
             var app = builder.Build();
 

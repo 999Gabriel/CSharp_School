@@ -63,6 +63,11 @@ namespace ORM
         {
             using (DbManager dbManager = new())
             {
+
+                Console.WriteLine("Applying migrations and checking for seed data...");
+                await dbManager.Database.MigrateAsync();
+                await SeedDataAsync(dbManager);
+
                 bool running = true;
                 while (running)
                 {
@@ -447,5 +452,52 @@ namespace ORM
                 Console.WriteLine("⚠️ Löschen abgebrochen!");
             }
         }
+
+        private static async Task SeedDataAsync(DbManager dbManager)
+        {
+            if (!await dbManager.Articles.AnyAsync())
+            {
+                Console.WriteLine("Seeding database with initial data...");
+                
+                var articles = new List<Article>
+                {
+                    new Article { Title = "Laptop", Name = "High-End Laptop", Price = 1500.00m, ReleaseDate = DateTime.Now.AddMonths(-12) },
+                    new Article { Title = "Smartphone", Name = "Latest Model", Price = 999.99m, ReleaseDate = DateTime.Now.AddMonths(-6) },
+                    new Article { Title = "Headphones", Name = "Noise Cancelling", Price = 299.50m, ReleaseDate = DateTime.Now.AddMonths(-3) },
+                    new Article { Title = "Monitor", Name = "4K Display", Price = 450.00m, ReleaseDate = DateTime.Now.AddMonths(-1) }
+                };
+
+                await dbManager.Articles.AddRangeAsync(articles);
+                await dbManager.SaveChangesAsync();
+
+                // Check if Reviews table exists and seed it if possible
+                // Assuming Review class exists and has ArticleId
+                try 
+                {
+                    var reviews = new List<Review>
+                    {
+                        new Review { ArticleId = articles[0].ArticleId, ReviewText = "Great laptop for development!", Rating = 5 },
+                        new Review { ArticleId = articles[0].ArticleId, ReviewText = "Battery life could be better.", Rating = 4 },
+                        new Review { ArticleId = articles[1].ArticleId, ReviewText = "Amazing camera!", Rating = 5 },
+                        new Review { ArticleId = articles[2].ArticleId, ReviewText = "Sound quality is top notch.", Rating = 5 },
+                        new Review { ArticleId = articles[3].ArticleId, ReviewText = "Good value for money.", Rating = 4 }
+                    };
+
+                    await dbManager.Reviews.AddRangeAsync(reviews);
+                    await dbManager.SaveChangesAsync();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Warning: Could not seed reviews. {ex.Message}");
+                }
+                
+                Console.WriteLine("Database seeded successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Database already contains data.");
+            }
+        }
     }
 }
+

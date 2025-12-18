@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <!-- 
+      Workaround for build failure when project path contains special characters (like colons).
+      Redirects intermediate and output paths to a safe location in /tmp.
+    -->
+    <BaseIntermediateOutputPath>/tmp/Web_API_Build_Artifacts/$(MSBuildProjectName)/obj/</BaseIntermediateOutputPath>
+    <BaseOutputPath>/tmp/Web_API_Build_Artifacts/$(MSBuildProjectName)/bin/</BaseOutputPath>
+  </PropertyGroup>
+</Project>
+
