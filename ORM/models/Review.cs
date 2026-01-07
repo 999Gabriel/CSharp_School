@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace ORM.models;
 
 public class Review
@@ -11,5 +13,6 @@ public class Review
     
     // Navigation Property (da zwischen Artikel und Review eine 1:n Beziehung besteht)
     // --> jeder Review gehört genau einem Artikel
-    public Article Article { get; set; } = null!;
+    [JsonIgnore]
+    public virtual Article? Article { get; set; } 
 }
