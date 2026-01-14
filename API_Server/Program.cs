@@ -12,7 +12,7 @@ namespace API_Server
              *
              *      Die WebAPI-Anwendung läuft auf einem Server (24h durchgehend)
              *  wichtige EIgenschaften:
-             *  - Client-Server-Architektur (WebAPI = Server, Client = z.B. Webanwendung, Mobile App, ...)
+             *  - Client_API-Server-Architektur (WebAPI = Server, Client_API = z.B. Webanwendung, Mobile App, ...)
              *  - die Daten werden normalerweise im JSON-Format gesendet und empfangen
              *  - erreichbar ist sie eindeutig über:
              *          1. eine URI (z.B.: https://meinewebapi.de/api/articles)
@@ -36,7 +36,7 @@ namespace API_Server
              * PATCH   https://meinewebapi.de/api/articles/2        => aktualisiert den Article mit der Id 2 (Daten im Body der Anfrage)
              * DELETE  https://meinewebapi.de/api/articles/7       => löscht den Article mit der Id 7
              *
-             * Die Daten werden vom Server an den Client im Body im JSON-Format gesendet
+             * Die Daten werden vom Server an den Client_API im Body im JSON-Format gesendet
              * in umgekehrte Richtung passiert das gleiche. 
              */
             
