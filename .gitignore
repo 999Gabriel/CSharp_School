@@ -1,0 +1,12 @@
+.idea/
+*.sln.DotSettings.user
+bin/
+obj/
+*.suo
+*.user
+*.userprefs
+*.lock.json
+*.DS_Store
+build_log.txt
+build_output*.txt
+

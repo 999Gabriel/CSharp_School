@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="iOSApp1.Views.AboutUs"
+             Title="About Us">
+
+    <Grid RowDefinitions="Auto, Auto, *" 
+          ColumnDefinitions="*" 
+          Padding="30" 
+          RowSpacing="20">
+
+        <!-- Row 0: Header -->
+        <Label Grid.Row="0" 
+               Text="About iOSApp1" 
+               FontSize="32" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" />
+
+        <!-- Row 1: Description -->
+        <Label Grid.Row="1" 
+               Text="Welcome to our application. This page demonstrates a Grid layout in .NET MAUI. The Grid allows us to organize content into flexible rows and columns." 
+               FontSize="18" 
+               HorizontalTextAlignment="Center" />
+
+        <!-- Row 2: Footer (Pushed to bottom by the '*' in RowDefinitions) -->
+        <VerticalStackLayout Grid.Row="2" 
+                             VerticalOptions="End" 
+                             Spacing="5">
+            <Label Text="Version 1.0.0" 
+                   TextColor="Gray" 
+                   HorizontalOptions="Center" />
+            <Label Text="© 2026 Company Name" 
+                   TextColor="Gray" 
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+    </Grid>
+
+</ContentPage>
